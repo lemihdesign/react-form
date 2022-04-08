@@ -1,6 +1,10 @@
-import classes from "./Button.module.css";
+// import classes from "./Button.module.css";
 const Button = (props) => {
-  return <button className={classes.button}>Start</button>;
+  return (
+    <button className="button" disabled={!props.disabled}>
+      Zarejestruj
+    </button>
+  );
 };
 
 export default Button;

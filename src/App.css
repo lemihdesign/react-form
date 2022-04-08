@@ -2,5 +2,97 @@
   padding-top: 75px;
   width: 100%;
   min-height: 100vh;
-  background-color: rgb(231, 231, 231);
+  background-image: url(assets/bg.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.card {
+  display: block;
+  margin: 0 auto;
+  max-width: 1100px;
+  min-height: 600px;
+  background-color: #fff;
+  border-radius: 20px 0 45px 0;
+  transform: skewX(-2deg);
+  box-shadow: 2px 8px 9px rgba(0, 0, 0, 0.26);
+}
+
+form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: skewX(2deg);
+}
+
+form h1 {
+  margin-top: 25px;
+  font-family: "Roboto";
+  /* text-transform: uppercase; */
+  color: #333;
+  /* font-weight: 400; */
+  font-size: 18px;
+  /* letter-spacing: 3px; */
+}
+
+form p {
+  margin-top: 10px;
+  font-family: "Roboto";
+  font-style: 14px;
+  color: #414141;
+}
+
+form .form-group {
+  width: 100%;
+  margin-top: 25px;
+}
+
+form .form-group label {
+  display: block;
+  margin-left: 10%;
+  margin-bottom: 10px;
+  margin-top: 25px;
+  font-family: "Roboto";
+  color: #333;
+}
+
+form .form-group input {
+  display: block;
+  margin: 20px auto;
+  width: 50%;
+  line-height: 40px;
+  background-color: rgb(233, 232, 232);
+  border: 1px solid #c9c9c9;
+  font-family: "Roboto";
+  font-size: 14px;
+  padding: 5px;
+}
+
+form .form-group .invalid input {
+  border-color: #b40e0e;
+  background-color: #fddddd;
+}
+.button {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 10px 5px;
+  cursor: pointer;
+  background-color: #3e7c17;
+  color: #fff;
+  font-family: "Roboto";
+  border: none;
+}
+
+.button:disabled,
+.button:disabled:hover {
+  background-color: #ac1818;
+  border-color: #ddd;
+  cursor: not-allowed;
 }
