@@ -1,6 +1,7 @@
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import useInput from "../../hooks/use-input";
+import Logo from "../UI/Logo";
 // import classes from "./Form.module.css";
 
 const Form = (props) => {
@@ -29,7 +30,7 @@ const Form = (props) => {
     valueChangeHandler: passwordChangeHandler,
     valueBlurHandler: passwordBlurHandler,
     reset: passwordInputReset,
-  } = useInput((value) => value.trim().length > 8);
+  } = useInput((value) => value.trim().length > 7);
 
   const {
     value: confirmPasswordInputValue,
@@ -39,7 +40,7 @@ const Form = (props) => {
     valueBlurHandler: confirmPasswordBlurHandler,
     reset: confirmPasswordInputReset,
   } = useInput(
-    (value) => value.trim().length > 8 && value === passwordInputValue
+    (value) => value.trim().length > 7 && value === passwordInputValue
   );
 
   let formIsValid = false;
@@ -68,6 +69,35 @@ const Form = (props) => {
     ? "form-input"
     : "form-input invalid";
 
+  let emailErrorMsg = "";
+  if (emailInputHasError && emailInputValue.trim() === "") {
+    emailErrorMsg = <p>Email nie może być pusty!</p>;
+  }
+
+  if (
+    emailInputHasError &&
+    emailInputValue.trim() !== "" &&
+    !emailInputValue.includes("@")
+  ) {
+    emailErrorMsg = <p>Email musi być poprawny!</p>;
+  }
+
+  let confirmPasswordErrorMsg = "";
+  if (
+    confirmPasswordInputHasError &&
+    confirmPasswordInputValue.trim().length < 8
+  ) {
+    confirmPasswordErrorMsg = <p>Hasło musi mieć minimum 8 znaków.</p>;
+  }
+
+  if (
+    confirmPasswordErrorMsg &&
+    confirmPasswordInputValue.trim().length > 8 &&
+    confirmPasswordInputValue.trim() !== passwordInputValue.trim()
+  ) {
+    confirmPasswordErrorMsg = <p>Hasła muszą być takie same!</p>;
+  }
+
   const onSubmitForm = (e) => {
     e.preventDefault();
 
@@ -79,6 +109,7 @@ const Form = (props) => {
 
   return (
     <form onSubmit={onSubmitForm}>
+      <Logo />
       <h1>Hello Again!</h1>
       <p>Nice to see you! Feel free to create an acount!</p>
       <div className="form-group">
@@ -93,6 +124,7 @@ const Form = (props) => {
             reset={nameInputReset}
           />
         </div>
+        {nameInputHasError && <p>Imie nie może być puste!</p>}
         <div className={emailInputClasses}>
           <Input
             type="email"
@@ -104,6 +136,7 @@ const Form = (props) => {
             reset={emailInputReset}
           />
         </div>
+        {emailErrorMsg}
         <div className={passwordInputClasses}>
           <Input
             type="password"
@@ -115,6 +148,7 @@ const Form = (props) => {
             reset={passwordInputReset}
           />
         </div>
+        {passwordInputHasError && <p>Hasło musi mieć minimum 8 znaków!</p>}
         <div className={confirmInputClasses}>
           <Input
             type="password"
@@ -126,6 +160,7 @@ const Form = (props) => {
             reset={confirmPasswordInputReset}
           />
         </div>
+        {confirmPasswordErrorMsg}
         <Button disabled={formIsValid} />
       </div>
     </form>

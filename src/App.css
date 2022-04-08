@@ -1,5 +1,5 @@
 .app {
-  padding-top: 75px;
+  padding-top: 25px;
   width: 100%;
   min-height: 100vh;
   background-image: url(assets/bg.jpg);
@@ -10,12 +10,24 @@
 .card {
   display: block;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1000px;
   min-height: 600px;
+  height: 100%;
+  padding: 25px 0;
   background-color: #fff;
-  border-radius: 20px 0 45px 0;
+  border-radius: 10px;
   transform: skewX(-2deg);
   box-shadow: 2px 8px 9px rgba(0, 0, 0, 0.26);
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+  display: block;
+  margin: 0 auto;
+  background-image: url(assets/logo.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 form {
@@ -74,6 +86,14 @@ form .form-group .invalid input {
   border-color: #b40e0e;
   background-color: #fddddd;
 }
+
+form .form-group p {
+  margin-left: 25%;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #e72828;
+}
+
 .button {
   width: 50%;
   height: 50px;
